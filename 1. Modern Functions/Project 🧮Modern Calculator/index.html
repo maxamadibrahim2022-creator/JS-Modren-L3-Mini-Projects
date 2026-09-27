@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <!-- Make the page responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Modern Calculator</title>
+
+    <!-- Connect CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Main calculator container -->
+    <main class="calculator">
+      <!-- Calculator title -->
+      <h1>Calculator 🧮</h1>
+
+      <!-- First number -->
+      <input type="number" placeholder="Firs number" id="firstNumber" />
+
+      <!-- Second number -->
+      <input type="number" placeholder="Second number" id="secondNumber" />
+
+      <!-- Operation buttons -->
+      <div class="buttons">
+        <button id="addButton">+</button>
+
+        <button id="subtractButton">−</button>
+
+        <button id="multiplyButton">×</button>
+
+        <button id="divedeButton">÷</button>
+      </div>
+
+      <div class="clear">
+        <p id="result">Result: —</p>
+
+        <button id="clearButton">Clear</button>
+      </div>
+    </main>
+
+    <!-- Connect JavaScript -->
+    <script src="main.js"></script>
+  </body>
+</html>
