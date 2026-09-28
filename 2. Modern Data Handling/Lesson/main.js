@@ -115,5 +115,48 @@ const{
 
 console.log(employeeName);
 console.log(employeeSalary);
-console.log(employeePosition);
-}
+console.log(employeePosition);}
+
+
+{// 3️⃣ Destructuring with Default Values ⚙️
+const user = {
+    name: "Mohamed"
+};
+
+const {
+    name,
+    age = 25
+} = user;
+
+console.log(name);
+console.log(age);
+
+// 🟡 Renaming + Default Value
+// You can combine both concepts. 🔥
+const employee = {
+    name: "Ali"
+};
+
+const {
+    name: employeeName,
+    salary: employeeSalary = 1000
+} = employee;
+
+console.log(employeeName);
+console.log(employeeSalary);
+
+// 🛠️ Practice
+// Try this:
+const product = {
+    name: "Laptop",
+    price: 800
+};
+const {
+    name:productName,
+    price:productPrice,
+    category:productCataegory = "Electronics"
+}=product
+
+console.log(productName);
+console.log(productPrice);
+console.log(productCataegory);}
