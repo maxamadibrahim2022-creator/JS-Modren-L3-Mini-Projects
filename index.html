@@ -1,1 +1,416 @@
-!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Data Manager (ES6 Destructuring, Spread, Rest)</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --accent: #6366f1;
+      --accent-hover: #4f46e5;
+      --text: #f8fafc;
+      --subtext: #94a3b8;
+      --border: #334155;
+      --tag-bg: #312e81;
+      --tag-text: #c7d2fe;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      color: var(--subtext);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1000px;
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h2 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    label {
+      font-size: 0.85rem;
+      color: var(--subtext);
+    }
+
+    input {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.6rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: var(--accent);
+    }
+
+    button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    button:hover {
+      background: var(--accent-hover);
+    }
+
+    .product-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .product-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      position: relative;
+    }
+
+    .product-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .product-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .product-price {
+      color: #10b981;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin: 0.3rem 0;
+    }
+
+    .tag {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+    }
+
+    .rest-details {
+      background: #090d16;
+      padding: 0.6rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      color: var(--subtext);
+      font-family: monospace;
+    }
+
+    .actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .btn-sm {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8rem;
+    }
+
+    .btn-discount {
+      background: #eab308;
+      color: black;
+    }
+
+    .btn-discount:hover {
+      background: #ca8a04;
+    }
+
+    .code-explain {
+      margin-top: 2rem;
+      width: 100%;
+      max-width: 1000px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .code-explain h3 {
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .code-explain ul {
+      margin-left: 1.2rem;
+      color: var(--subtext);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🛒 Product Data Manager</h1>
+    <p>Demonstrating ES6 Destructuring, Spread Operator, and Rest Parameters</p>
+  </header>
+
+  <div class="container">
+    <!-- Form to add new product -->
+    <div class="card">
+      <h2>Add Product</h2>
+      <form id="productForm">
+        <div class="form-group">
+          <label for="name">Product Name</label>
+          <input type="text" id="name" placeholder="e.g., Wireless Mouse" required>
+        </div>
+        <div class="form-group">
+          <label for="price">Price ($)</label>
+          <input type="number" id="price" placeholder="e.g., 49.99" step="0.01" required>
+        </div>
+        <div class="form-group">
+          <label for="category">Category</label>
+          <input type="text" id="category" placeholder="e.g., Electronics" required>
+        </div>
+        <div class="form-group">
+          <label for="tags">Tags (comma separated)</label>
+          <input type="text" id="tags" placeholder="e.g., wireless, sale, tech">
+        </div>
+        <div class="form-group">
+          <label for="sku">SKU (Rest Data)</label>
+          <input type="text" id="sku" placeholder="e.g., ELEC-9912">
+        </div>
+        <div class="form-group">
+          <label for="supplier">Supplier (Rest Data)</label>
+          <input type="text" id="supplier" placeholder="e.g., TechCorp Inc.">
+        </div>
+        <button type="submit">Add Product</button>
+      </form>
+    </div>
+
+    <!-- Inventory Display -->
+    <div class="card">
+      <h2>Inventory Catalog</h2>
+      <div id="productList" class="product-list"></div>
+    </div>
+  </div>
+
+  <!-- Feature Highlights -->
+  <div class="code-explain">
+    <h3>ES6 Features Applied:</h3>
+    <ul>
+      <li><strong>Destructuring:</strong> Used in rendering components to extract <code>{ name, price, tags, ...rest }</code> directly from product objects, and array destructuring for tags <code>[firstTag, ...otherTags]</code>.</li>
+      <li><strong>Spread Operator (`...`):</strong> Used to clone the products array, append new items without mutating state, merge default tags, and apply discounts to object clones.</li>
+      <li><strong>Rest Parameters (`...rest`):</strong> Used to gather all dynamic metadata properties (SKU, Supplier) into a single extra details object.</li>
+    </ul>
+  </div>
+
+  <script>
+    // Initial dataset
+    let products = [
+      {
+        id: 1,
+        name: "Mechanical Keyboard",
+        price: 89.99,
+        category: "Peripherals",
+        tags: ["gaming", "hardware", "rgb"],
+        sku: "KB-8831",
+        supplier: "KeyWorks Ltd"
+      },
+      {
+        id: 2,
+        name: "Ergonomic Chair",
+        price: 249.50,
+        category: "Furniture",
+        tags: ["office", "health"],
+        sku: "CH-1022",
+        supplier: "ComfortCo"
+      }
+    ];
+
+    const form = document.getElementById('productForm');
+    const productList = document.getElementById('productList');
+
+    // Render Products to UI
+    function renderProducts() {
+      productList.innerHTML = '';
+
+      products.forEach(product => {
+        // 1. OBJECT DESTRUCTURING & REST OPERATOR
+        // Separate primary properties from miscellaneous details using Rest
+        const { id, name, price, category, tags, ...restDetails } = product;
+
+        // 2. ARRAY DESTRUCTURING & REST OPERATOR
+        // Extract the main tag and capture remaining tags
+        const [primaryTag, ...secondaryTags] = tags.length > 0 ? tags : ['General'];
+
+        const card = document.createElement('div');
+        card.className = 'product-card';
+
+        // Render HTML using destructured values
+        card.innerHTML = `
+          <div class="product-header">
+            <span class="product-title">${name}</span>
+            <span class="product-price">$${Number(price).toFixed(2)}</span>
+          </div>
+          <div><small style="color: var(--subtext)">Category: ${category}</small></div>
+          
+          <div class="tags">
+            <span class="tag" style="border: 1px solid var(--accent)">⭐ ${primaryTag}</span>
+            ${secondaryTags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+          </div>
+
+          <div class="rest-details">
+            <strong>Rest Details Object:</strong>
+            ${JSON.stringify(restDetails)}
+          </div>
+
+          <div class="actions">
+            <button class="btn-sm btn-discount" onclick="applyDiscount(${id})">Apply 10% Off</button>
+            <button class="btn-sm" style="background: #ef4444;" onclick="deleteProduct(${id})">Delete</button>
+          </div>
+        `;
+
+        productList.appendChild(card);
+      });
+    }
+
+    // Add Product using Spread & Rest
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const price = parseFloat(document.getElementById('price').value);
+      const category = document.getElementById('category').value;
+      const tagsInput = document.getElementById('tags').value;
+      const sku = document.getElementById('sku').value;
+      const supplier = document.getElementById('supplier').value;
+
+      // Process tags array
+      const rawTags = tagsInput ? tagsInput.split(',').map(t => t.trim()) : [];
+      
+      // SPREAD OPERATOR: Combine input tags with default default tag
+      const defaultTags = ['New-Arrival'];
+      const combinedTags = [...rawTags, ...defaultTags];
+
+      const newProduct = {
+        id: Date.now(),
+        name,
+        price,
+        category,
+        tags: combinedTags,
+        sku: sku || 'N/A',
+        supplier: supplier || 'Unknown'
+      };
+
+      // SPREAD OPERATOR: Immutable array addition
+      products = [...products, newProduct];
+
+      form.reset();
+      renderProducts();
+    });
+
+    // Apply Discount using Spread Operator
+    window.applyDiscount = function(id) {
+      products = products.map(product => {
+        if (product.id === id) {
+          // SPREAD OPERATOR: Clone product object & override the price property
+          return {
+            ...product,
+            price: product.price * 0.9
+          };
+        }
+        return product;
+      });
+
+      renderProducts();
+    };
+
+    // Delete Product
+    window.deleteProduct = function(id) {
+      products = products.filter(product => product.id !== id);
+      renderProducts();
+    };
+
+    // Initial render
+    renderProducts();
+  </script>
+</body>
+</html>
