@@ -1,0 +1,94 @@
+/* STEP 1: Reset default browser spacing */
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* STEP 2: Style the page */
+body{
+    font-family: arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #222;
+    padding: 40px 20px;
+}
+
+/* STEP 3: Center the main content */
+.container{
+    max-width: 700px;
+    margin: 0, auto;
+    background-color: #fff;
+    padding: 30px;
+    border: 20px;
+    border-radius: 0 4px 15px rgba(0, 0, 0, 0.088);
+}
+
+/* STEP 4: Style the heading */
+h1{
+    color: #666;
+    margin-bottom: 25px;
+}
+
+/* STEP 5: Arrange the form fields */
+#productForm{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+/* STEP 6: Style inputs */
+input{
+    min-width: 0;
+    border: none;
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    margin-top: 15px;
+}
+
+/* STEP 7: Style buttons */
+button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: #2563eb;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1d4ed8;
+}
+
+/* STEP 8: Style the product list */
+h2 {
+  margin-bottom: 15px;
+}
+
+#productList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr) ;
+  gap: 10px;
+  list-style: none;
+}
+
+#productList li {
+  
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+/* STEP 9: Make the layout mobile-friendly */
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+
+  #productForm {
+    flex-direction: column;
+  }
+}

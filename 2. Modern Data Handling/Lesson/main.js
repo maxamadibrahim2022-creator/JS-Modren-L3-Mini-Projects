@@ -306,7 +306,7 @@ const employee = {
 
 function showEmployee({name,department:{name:departmentName,skills:[firstSkill,secondSkill,thirdSkill]}}){
     console.log(`Employee: ${name}`);
-    console.log(`department: ${departmentName}`);
+    console.log(`Department: ${departmentName}`);
     console.log(`Skill 1: ${firstSkill}`);
     console.log(`Skill 2: ${secondSkill}`);
     console.log(`Skill 3: ${thirdSkill}`);
@@ -336,3 +336,14 @@ function showStudent({name,courses:[firstCourse,secondCourse,...otherCourse]}){
     console.log(`Other Courses: ${otherCourse}`);
 }
 showStudent(student)}
+
+
+// 🧪 Your practice
+// Create these arrays:
+const levelOne = ["Variables", "Functions"];
+const levelTwo = ["Arrays", "Objects"];
+
+const allTopics =[...levelOne,...levelTwo ,"Destracturing"];
+
+console.log(allTopics);
+console.log(levelOne);

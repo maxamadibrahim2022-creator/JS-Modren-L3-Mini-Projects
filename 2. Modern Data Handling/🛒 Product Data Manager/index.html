@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🛒 Product Data Manager</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <main id="container">
+      <h1>🛒 Product Data Manager</h1>
+      <p>product your product in one place.</p>
+
+      <form action="" id="productForm">
+        <input
+          type="text"
+          placeholder="product name"
+          required
+          id="productName"
+        />
+        <input
+          type="number"
+          placeholder="product price"
+          required
+          min="0.01"
+          step="0.01"
+          id="productPrice"
+        />
+
+        <button type="submit">Add Product</button>
+      </form>
+
+      <h2>Products</h2>
+      <ul id="productList"></ul>
+    </main>
+  </body>
+</html>
