@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile App</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <section class="profile-card">
+      <div class="avatar" id="avatar">G</div>
+
+      <h1 id="name">Loading profile...</h1>
+      <p class="email" id="email"></p>
+
+      <div class="divider"></div>
+
+      <div class="info-row">
+        <span class="label">City</span>
+        <span id="city"></span>
+      </div>
+
+      <div class="info-row">
+        <span class="label">Bio</span>
+        <span id="bio"></span>
+      </div>
+
+      <button id="toggleButton" type="button">
+        Show Profile Data
+      </button>
+
+      <pre id="debugOutput" hidden></pre>
+    </section>
+  </main>
+</body>
+</html>
