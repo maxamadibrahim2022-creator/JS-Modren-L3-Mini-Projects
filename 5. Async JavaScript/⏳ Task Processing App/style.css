@@ -1,0 +1,142 @@
+/* Apply predictable sizing to all elements. */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 30px 16px;
+
+    font-family: Arial, sans-serif;
+    background: #f1f5f9;
+    color: #1e293b;
+}
+
+.app {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 28px;
+
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgb(0 0 0 / 8%);
+}
+
+h1 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.description {
+    color: #64748b;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.status-card {
+    margin: 24px 0;
+    padding: 18px;
+
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+}
+
+.label {
+    color: #64748b;
+    font-size: 14px;
+}
+
+#status {
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+button {
+    flex: 1;
+    min-width: 140px;
+    padding: 13px 18px;
+
+    color: white;
+    background: #2563eb;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.reset-btn {
+    color: #1e293b;
+    background: #e2e8f0;
+}
+
+.reset-btn:hover {
+    background: #cbd5e1;
+}
+
+.tasks,
+.log-section {
+    margin-top: 28px;
+}
+
+h2 {
+    font-size: 18px;
+}
+
+ul,
+ol {
+    padding-left: 24px;
+    line-height: 2;
+}
+
+.tasks li {
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+.tasks li.active {
+    background: #dbeafe;
+    color: #1d4ed8;
+    font-weight: bold;
+}
+
+.tasks li.completed {
+    color: #15803d;
+}
+
+.log-section {
+    padding: 16px;
+    background: #f8fafc;
+    border-radius: 10px;
+}
+
+#logList li {
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 480px) {
+    .app {
+        padding: 20px;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+}
