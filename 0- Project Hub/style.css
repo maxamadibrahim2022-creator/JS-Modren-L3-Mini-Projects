@@ -1,0 +1,320 @@
+
+/* =========================
+   1. GLOBAL STYLES
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #f8fafc;
+    color: #172033;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* =========================
+   2. HEADER
+========================= */
+
+.header {
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar {
+    min-height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.logo span {
+    color: #6366f1;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 30px;
+}
+
+.navbar nav a {
+    color: #64748b;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.navbar nav a:hover {
+    color: #6366f1;
+}
+
+.level-badge {
+    background: #eef2ff;
+    color: #4f46e5;
+    padding: 8px 15px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* =========================
+   3. HERO SECTION
+========================= */
+
+.hero {
+    padding: 110px 0;
+    background: linear-gradient(
+        135deg,
+        #eef2ff,
+        #f8fafc,
+        #e0e7ff
+    );
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-label {
+    display: inline-block;
+    color: #4f46e5;
+    background: #ffffff;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(36px, 6vw, 65px);
+    line-height: 1.2;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    display: block;
+    color: #6366f1;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: 0 auto 30px;
+    color: #64748b;
+    font-size: 16px;
+}
+
+.primary-btn {
+    display: inline-block;
+    background: #6366f1;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.primary-btn:hover {
+    background: #4f46e5;
+    transform: translateY(-3px);
+}
+
+/* =========================
+   4. PROJECTS SECTION
+========================= */
+
+.projects-section {
+    padding: 90px 0;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-heading span,
+.about-content span {
+    color: #6366f1;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.section-heading h2,
+.about-content h2 {
+    font-size: 35px;
+    margin: 10px 0;
+}
+
+.section-heading p {
+    color: #64748b;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+/* =========================
+   5. PROJECT CARD
+========================= */
+
+.project-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 25px;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-7px);
+    border-color: #a5b4fc;
+    box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+}
+
+.project-icon {
+    width: 55px;
+    height: 55px;
+    display: grid;
+    place-items: center;
+    background: #eef2ff;
+    border-radius: 12px;
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+.project-number {
+    color: #6366f1;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.project-card h3 {
+    font-size: 19px;
+    margin: 8px 0;
+}
+
+.project-card p {
+    color: #64748b;
+    font-size: 13px;
+    margin-bottom: 22px;
+    flex-grow: 1;
+}
+
+.project-link {
+    display: inline-block;
+    color: #4f46e5;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.project-link:hover {
+    color: #312e81;
+}
+
+/* =========================
+   6. ABOUT SECTION
+========================= */
+
+.about-section {
+    padding: 80px 0;
+    background: #eef2ff;
+    text-align: center;
+}
+
+.about-content {
+    max-width: 750px;
+}
+
+.about-content p {
+    color: #64748b;
+    margin-top: 15px;
+}
+
+/* =========================
+   7. FOOTER
+========================= */
+
+.footer {
+    background: #111827;
+    color: #cbd5e1;
+    text-align: center;
+    padding: 25px 0;
+    font-size: 13px;
+}
+
+/* =========================
+   8. RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 900px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        flex-wrap: wrap;
+        gap: 15px;
+        padding: 15px 0;
+    }
+
+    .navbar nav {
+        gap: 15px;
+    }
+
+    .level-badge {
+        display: none;
+    }
+
+    .hero {
+        padding: 75px 0;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-heading h2,
+    .about-content h2 {
+        font-size: 28px;
+    }
+}
